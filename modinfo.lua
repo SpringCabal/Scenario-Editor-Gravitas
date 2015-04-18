@@ -1,14 +1,14 @@
 return {
-  name='Scenario Editor Corruption',
-  description='Scenario Editor for Corruption',
-  shortname='SE_CR',
+  name='Scenario Editor Gravitas',
+  description='Scenario Editor for Gravitas',
+  shortname='SE_GRR',
   version='git',
   mutator='Official',
-  game='Scenario Editor Corruption',
-  shortGame='SE_CR',
+  game='Scenario Editor Gravitas',
+  shortGame='SE_GRR',
   modtype=1,
   depend = {
-    'Corruption Warmup',
+    'Gravitas',
 	'Scenario Editor Core git',
   },
 }
