@@ -1,4 +1,41 @@
 return {
+    functions = {
+        {
+            humanName = "Electrafi units",
+            name = "ELECTRAFI_UNITS",
+            output = "unit_array",
+            tags = {"Units"},
+            execute = function()
+                return GG.Electrafi.GetAllElectrafiUnits()
+            end
+        },
+        {
+            humanName = "Units in electrafi proximity",
+            name = "UNITS_ELECTRAFI_PROXIMITY",
+            input = {"unit"},
+            output = "unit_array",
+            tags = {"Units"},
+            execute = function()
+                return GG.Electrafi.GetUnitsInProximity(input.unit)
+            end
+        },
+        -- TODO: This function shouldn't exist when Scened meta-programming gets improved
+        {
+            humanName = "Units in all electrafi proximity",
+            name = "UNITS_ALL_ELECTRAFI_PROXIMITY",
+            output = "unit_array",
+            tags = {"Units"},
+            execute = function()
+                local units = {}
+                for _, elecID in pairs(GG.Electrafi.GetAllElectrafiUnits()) do
+                    for _, unitID in pairs(GG.Electrafi.GetUnitsInProximity(elecID)) do
+                        table.insert(units, unitID)
+                    end
+                end
+                return units
+            end
+        },
+    },
     actions = {
         {
             humanName = "Link Plate To Gate",
@@ -50,6 +87,17 @@ return {
             name = "ENABLE_LINK_CHECKS",
             execute = function(input)
                 GG.Plate.EnableLinkChecks()
+            end
+        },
+        {
+            humanName = "Stun units",
+            name = "STUN_UNITS",
+            input = { "unit_array" },
+            execute = function(input)
+                for _, unitID in pairs(input.unit_array) do
+                    local _, maxHealth = Spring.GetUnitHealth(unitID)
+                    Spring.SetUnitHealth(unitID, { paralyze = maxHealth * 1.5})
+                end
             end
         },
     }
