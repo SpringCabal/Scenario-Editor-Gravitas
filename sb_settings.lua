@@ -1,15 +1,17 @@
-local UIWidgets = {"Gravity weapon state", "Health Bar", "Quit Button", "State & Command Menus"}
+local UIWidgets = {"Gravity weapon state", "Health Bar", "Quit Button", "State & Command Menus", "Keybinds"}
 
 return {
     OnStopEditingUnsynced = function()
         for _, widgetName in ipairs(UIWidgets) do
-            -- widgetHandler:EnableWidget(widgetName)
+            _widgetHandler:EnableWidget(widgetName)
         end
     end,
 
     OnStartEditingUnsynced = function()
         for _, widgetName in ipairs(UIWidgets) do
-            -- widgetHandler:DisableWidget(widgetName)
+            local addon = _widgetHandler:FindByName(widgetName)
+            _widgetHandler:RemoveWidget(addon)
         end
+        Spring.SendCommands("resbar 0")
     end,
 }
