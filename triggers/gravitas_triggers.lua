@@ -1,4 +1,16 @@
 return {
+    events = {
+        {
+            humanName = "Gate opened",
+            name = "GATE_OPENED",
+            param = "unit",
+        },
+        {
+            humanName = "Gate closed",
+            name = "GATE_CLOSED",
+            param = "unit",
+        },
+    },
     functions = {
         {
             humanName = "Electrafi units",
@@ -40,7 +52,7 @@ return {
         {
             humanName = "Link Plate To Gate",
             name = "LINK_PLATE_GATE",
-            input = { 
+            input = {
                 {
                     name = "plate",
                     type = "unit",
@@ -57,7 +69,7 @@ return {
         {
             humanName = "Bitmask Link Plate To Gate",
             name = "BITMASK_LINK_PLATE_GATE",
-            input = { 
+            input = {
                 {
                     name = "plate_pos",
                     type = "unit_array",
