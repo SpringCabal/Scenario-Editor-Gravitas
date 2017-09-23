@@ -16,7 +16,7 @@ return {
             humanName = "Electrafi units",
             name = "ELECTRAFI_UNITS",
             output = "unit_array",
-            tags = {"Units"},
+            tags = {"Gravitas"},
             execute = function()
                 return GG.Electrafi.GetAllElectrafiUnits()
             end
@@ -26,7 +26,7 @@ return {
             name = "UNITS_ELECTRAFI_PROXIMITY",
             input = {"unit"},
             output = "unit_array",
-            tags = {"Units"},
+            tags = {"Gravitas"},
             execute = function()
                 return GG.Electrafi.GetUnitsInProximity(input.unit)
             end
@@ -36,7 +36,7 @@ return {
             humanName = "Units in all electrafi proximity",
             name = "UNITS_ALL_ELECTRAFI_PROXIMITY",
             output = "unit_array",
-            tags = {"Units"},
+            tags = {"Gravitas"},
             execute = function()
                 local units = {}
                 for _, elecID in pairs(GG.Electrafi.GetAllElectrafiUnits()) do
@@ -52,6 +52,7 @@ return {
         {
             humanName = "Link Plate To Gate",
             name = "LINK_PLATE_GATE",
+            tags = {"Gravitas"},
             input = {
                 {
                     name = "plate",
@@ -69,6 +70,7 @@ return {
         {
             humanName = "Bitmask Link Plate To Gate",
             name = "BITMASK_LINK_PLATE_GATE",
+            tags = {"Gravitas"},
             input = {
                 {
                     name = "plate_pos",
@@ -97,6 +99,7 @@ return {
         {
             humanName = "Enable link checks",
             name = "ENABLE_LINK_CHECKS",
+            tags = {"Gravitas"},
             execute = function(input)
                 GG.Plate.EnableLinkChecks()
             end
@@ -105,6 +108,7 @@ return {
             humanName = "Stun units",
             name = "STUN_UNITS",
             input = { "unit_array" },
+            tags = {"Gravitas"},
             execute = function(input)
                 for _, unitID in pairs(input.unit_array) do
                     local _, maxHealth = Spring.GetUnitHealth(unitID)
